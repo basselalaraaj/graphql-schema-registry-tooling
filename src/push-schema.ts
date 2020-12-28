@@ -3,7 +3,7 @@ import gql from "graphql-tag";
 import got from "got";
 import { print } from "graphql/language/printer";
 
-export const pushSchema = async (schemaPath: string) => {
+export const pushSchema = async (schemaPath: string): Promise<boolean> => {
   const PUSH_SCHEMA_QUERY = gql`
     mutation PushSchema($schemaInput: SchemaInput!) {
       pushSchema(schemaInput: $schemaInput)
@@ -33,7 +33,8 @@ export const pushSchema = async (schemaPath: string) => {
         typeDefs: rawSchema,
       },
     };
-    const result: any = await got.post(config.REGISTRY_URL, {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { body }: any = await got.post(config.REGISTRY_URL, {
       json: {
         query: print(PUSH_SCHEMA_QUERY),
         variables,
@@ -41,13 +42,22 @@ export const pushSchema = async (schemaPath: string) => {
       responseType: "json",
     });
 
-    if (result.pushSchema) {
+    if (body.errors) {
+      throw new Error(body.errors);
+    }
+
+    if (body.data.pushSchema) {
       console.info("successfully pushed graphql schema to registry");
     }
+
+    return true;
   } catch (error) {
     console.error(
       "something went wrong when pushing graphql schema to registry",
       error
+    );
+    throw new Error(
+      `something went wrong when pushing graphql schema to registry ${error}`
     );
   }
 };

@@ -25,3 +25,8 @@ Add command to your package.json
 ```shell
 graphql-schema-registry push src/schema.graphql
 ```
+
+For more commands and options run
+```shell
+graphql-schema-registry help
+```
