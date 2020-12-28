@@ -6,7 +6,7 @@ import { pushSchema } from "./push-schema";
 dotenv.config();
 
 program
-  .version("0.1.0")
+  .version("0.1.1")
   .description("Tooling for schema graphql registry")
   .command("push <schemaPath>")
   .description("push graphql schema to registry")
