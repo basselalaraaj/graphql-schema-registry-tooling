@@ -1,7 +1,7 @@
 # graphql-schema-registry-tooling
 [![npm](https://img.shields.io/npm/v/graphql-schema-registry-tooling.svg)](https://www.npmjs.com/package/graphql-schema-registry-tooling)
 
-This package offers tooling for the [graphql-schema-registry](https://github.com/basselalaraaj/graphql-schema-registry)
+This package makes it easy to push and retrieve schemas from [graphql-schema-registry](https://github.com/basselalaraaj/graphql-schema-registry).
 
 ## Getting started
 
