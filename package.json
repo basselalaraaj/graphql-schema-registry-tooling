@@ -13,7 +13,8 @@
     "test": "jest --config jest.config.js",
     "test:watch": "jest --config jest.config.js --watch",
     "test:coverage": "yarn test --collectCoverage --collectCoverageFrom \"src/**/*.ts\" --coverageDirectory \"test-reports\"",
-    "lint": "eslint \"src/**/*.ts\""
+    "lint": "eslint \"src/**/*.ts\"",
+    "generate:graphql:types": "graphql-codegen --config codegen.yml"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,9 @@
     "ts-node": "9.1.1"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "1.20.0",
+    "@graphql-codegen/typescript": "^1.19.0",
+    "@graphql-codegen/typescript-resolvers": "1.18.1",
     "@types/got": "^9.6.11",
     "@types/jest": "26.0.19",
     "@typescript-eslint/eslint-plugin": "^4.11.1",
